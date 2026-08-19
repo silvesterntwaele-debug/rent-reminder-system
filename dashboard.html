@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Rent Reminder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <span class="brand">🏠 Rent Reminder</span>
+    <span id="user-name"></span>
+    <button id="logout-btn">Log Out</button>
+  </nav>
+
+  <main class="dashboard">
+    <section class="stats-grid" id="stats-grid"></section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Properties</h2>
+        <button class="add-btn" data-modal="property-modal">+ Add Property</button>
+      </div>
+      <div id="properties-list" class="card-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Tenants</h2>
+        <div class="header-actions">
+          <input type="text" id="tenant-search" placeholder="Search tenants...">
+          <button class="add-btn" data-modal="tenant-modal">+ Add Tenant</button>
+        </div>
+      </div>
+      <div id="tenants-list" class="card-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Rent Payments</h2>
+        <div class="header-actions">
+          <select id="payment-filter">
+            <option value="">All</option>
+            <option value="unpaid">Unpaid</option>
+            <option value="overdue">Overdue</option>
+            <option value="paid">Paid</option>
+          </select>
+          <button class="add-btn" data-modal="payment-modal">+ Add Payment</button>
+        </div>
+      </div>
+      <div id="payments-list" class="card-list"></div>
+    </section>
+  </main>
+
+  <!-- Add Property Modal -->
+  <div class="modal" id="property-modal">
+    <div class="modal-content">
+      <h3>Add Property</h3>
+      <form id="property-form">
+        <label>Property Name</label>
+        <input type="text" id="property-name" required>
+        <label>Address</label>
+        <input type="text" id="property-address" required>
+        <label>City</label>
+        <input type="text" id="property-city">
+        <label>Province</label>
+        <input type="text" id="property-province">
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" data-close="property-modal">Cancel</button>
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Tenant Modal -->
+  <div class="modal" id="tenant-modal">
+    <div class="modal-content">
+      <h3>Add Tenant</h3>
+      <form id="tenant-form">
+        <label>Property</label>
+        <select id="tenant-property" required></select>
+        <label>Full Name</label>
+        <input type="text" id="tenant-name" required>
+        <label>Email</label>
+        <input type="email" id="tenant-email" required>
+        <label>Phone</label>
+        <input type="text" id="tenant-phone">
+        <label>Unit Number</label>
+        <input type="text" id="tenant-unit">
+        <label>Monthly Rent (R)</label>
+        <input type="number" id="tenant-rent" step="0.01" required>
+        <label>Rent Due Day (1–28)</label>
+        <input type="number" id="tenant-due-day" min="1" max="28" value="1" required>
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" data-close="tenant-modal">Cancel</button>
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Payment Modal -->
+  <div class="modal" id="payment-modal">
+    <div class="modal-content">
+      <h3>Add Rent Payment</h3>
+      <form id="payment-form">
+        <label>Tenant</label>
+        <select id="payment-tenant" required></select>
+        <label>Amount Due (R)</label>
+        <input type="number" id="payment-amount" step="0.01" required>
+        <label>Due Date</label>
+        <input type="date" id="payment-due-date" required>
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" data-close="payment-modal">Cancel</button>
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

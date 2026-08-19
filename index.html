@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent Reminder System — Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>🏠 Rent Reminder</h1>
+      <p class="subtitle">Manage properties, tenants and rent — never chase payments manually again.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="register">Register</button>
+      </div>
+
+      <form id="login-form" class="tab-panel active">
+        <label>Email</label>
+        <input type="email" id="login-email" required>
+        <label>Password</label>
+        <input type="password" id="login-password" required>
+        <button type="submit">Log In</button>
+        <p class="error" id="login-error"></p>
+      </form>
+
+      <form id="register-form" class="tab-panel">
+        <label>Full Name</label>
+        <input type="text" id="register-name" required>
+        <label>Email</label>
+        <input type="email" id="register-email" required>
+        <label>Password</label>
+        <input type="password" id="register-password" required minlength="6">
+        <button type="submit">Create Account</button>
+        <p class="error" id="register-error"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
